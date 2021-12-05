@@ -134,7 +134,7 @@ static const uint32_t LOOKUP_CRC32_TABLE[] = {
 
 #if CRC8_USE_LOOKUP_TABLE == true
 
-uint8_t generateCRC8(const uint8_t *byteBuffer, uint8_t length) {
+uint8_t generateCRC8(const char *byteBuffer, uint8_t length) {
     uint8_t crc = 0;
     for (uint8_t i = 0; i < length; i++) {
         crc = LOOKUP_CRC8_TABLE[crc ^ byteBuffer[i]];
@@ -144,7 +144,7 @@ uint8_t generateCRC8(const uint8_t *byteBuffer, uint8_t length) {
 
 #else
 
-uint8_t generateCRC8(const uint8_t *byteBuffer, uint8_t length) {
+uint8_t generateCRC8(const char *byteBuffer, uint8_t length) {
     uint8_t crc = 0;
 
     uint8_t dataByte;
@@ -165,7 +165,7 @@ uint8_t generateCRC8(const uint8_t *byteBuffer, uint8_t length) {
 
 #if CRC16_USE_LOOKUP_TABLE == true
 
-uint16_t generateCRC16(const uint8_t *byteBuffer, uint8_t length) {
+uint16_t generateCRC16(const char *byteBuffer, uint8_t length) {
     uint16_t crc = 0;
     for (uint8_t i = 0; i < length; i++) {
         crc = LOOKUP_CRC16_TABLE[((crc >> 8) ^ byteBuffer[i]) & 0xFF] ^ (crc << 8);
@@ -175,7 +175,7 @@ uint16_t generateCRC16(const uint8_t *byteBuffer, uint8_t length) {
 
 #else
 
-uint16_t generateCRC16(const uint8_t *byteBuffer, uint8_t length) {
+uint16_t generateCRC16(const char *byteBuffer, uint8_t length) {
     const uint16_t generator = 0x1021; /* divisor is 16bit */
     uint16_t crc = 0; /* CRC value is 16bit */
 
@@ -198,7 +198,7 @@ uint16_t generateCRC16(const uint8_t *byteBuffer, uint8_t length) {
 
 #if CRC32_USE_LOOKUP_TABLE == true
 
-uint32_t generateCRC32 (const uint8_t *byteBuffer, uint8_t length) {
+uint32_t generateCRC32 (const char *byteBuffer, uint8_t length) {
     uint32_t crc = 0;
 
     for (uint8_t i = 0; i < length; i++) {
@@ -208,7 +208,7 @@ uint32_t generateCRC32 (const uint8_t *byteBuffer, uint8_t length) {
 }
 #else
 
-uint32_t generateCRC32(const uint8_t *byteBuffer, uint8_t length) {
+uint32_t generateCRC32(const char *byteBuffer, uint8_t length) {
     const uint32_t polynomial = 0x04C11DB7; /* divisor is 32bit */
     uint32_t crc = 0; /* CRC value is 32bit */
 
