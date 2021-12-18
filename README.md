@@ -1,4 +1,7 @@
 # CRC
+
+[![tests](https://github.com/ximtech/CRC/actions/workflows/cmake-ci.yml/badge.svg)](https://github.com/ximtech/CRC/actions/workflows/cmake-ci.yml)
+
 A cyclic redundancy code (CRC) is a powerful type of checksum that is able to detect corruption of data that is stored in 
 and/or transmitted between embedded systems. 
 
