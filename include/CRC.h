@@ -8,10 +8,10 @@
 #define CRC32_USE_LOOKUP_TABLE false
 
 // Dallas 1-wire 8-bit CRC calculation.
-uint8_t generateCRC8(const char *byteBuffer, uint8_t length);
+uint8_t generateCRC8(const char *byteBuffer, uint32_t length);
 
 // Dallas 1-wire 16-bit CRC calculation. Developed from Maxim Application Note 27.
-uint16_t generateCRC16(const char *byteBuffer, uint8_t length);
+uint16_t generateCRC16(const char *byteBuffer, uint32_t length);
 
 // Custom implementation
-uint32_t generateCRC32(const char *byteBuffer, uint8_t length);
+uint32_t generateCRC32(const char *byteBuffer, uint32_t length);

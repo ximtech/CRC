@@ -134,9 +134,9 @@ static const uint32_t LOOKUP_CRC32_TABLE[] = {
 
 #if CRC8_USE_LOOKUP_TABLE == true
 
-uint8_t generateCRC8(const char *byteBuffer, uint8_t length) {
+uint8_t generateCRC8(const char *byteBuffer, uint32_t length) {
     uint8_t crc = 0;
-    for (uint8_t i = 0; i < length; i++) {
+    for (uint32_t i = 0; i < length; i++) {
         crc = LOOKUP_CRC8_TABLE[crc ^ byteBuffer[i]];
     }
     return crc;
@@ -144,11 +144,11 @@ uint8_t generateCRC8(const char *byteBuffer, uint8_t length) {
 
 #else
 
-uint8_t generateCRC8(const char *byteBuffer, uint8_t length) {
+uint8_t generateCRC8(const char *byteBuffer, uint32_t length) {
     uint8_t crc = 0;
 
     uint8_t dataByte;
-    for (uint8_t i = 0; i < length; i++) {
+    for (uint32_t i = 0; i < length; i++) {
         dataByte = byteBuffer[i];
         for (uint8_t j = 0; j < 8; j++) {
             uint8_t mix = (crc ^ dataByte) & 0x01;
@@ -165,9 +165,9 @@ uint8_t generateCRC8(const char *byteBuffer, uint8_t length) {
 
 #if CRC16_USE_LOOKUP_TABLE == true
 
-uint16_t generateCRC16(const char *byteBuffer, uint8_t length) {
+uint16_t generateCRC16(const char *byteBuffer, uint32_t length) {
     uint16_t crc = 0;
-    for (uint8_t i = 0; i < length; i++) {
+    for (uint32_t i = 0; i < length; i++) {
         crc = LOOKUP_CRC16_TABLE[((crc >> 8) ^ byteBuffer[i]) & 0xFF] ^ (crc << 8);
     }
     return crc;
@@ -175,14 +175,14 @@ uint16_t generateCRC16(const char *byteBuffer, uint8_t length) {
 
 #else
 
-uint16_t generateCRC16(const char *byteBuffer, uint8_t length) {
+uint16_t generateCRC16(const char *byteBuffer, uint32_t length) {
     const uint16_t generator = 0x1021; /* divisor is 16bit */
     uint16_t crc = 0; /* CRC value is 16bit */
 
-    for (int i = 0; i < length; i++) {
+    for (uint32_t i = 0; i < length; i++) {
         crc ^= (byteBuffer[i] << 8); /* move byte into MSB of 16bit CRC */
 
-        for (int j = 0; j < 8; j++) {
+        for (uint8_t j = 0; j < 8; j++) {
             if ((crc & 0x8000) != 0) { /* test for MSB = bit 15 */
                 crc = ((crc << 1) ^ generator);
             } else {
@@ -198,24 +198,24 @@ uint16_t generateCRC16(const char *byteBuffer, uint8_t length) {
 
 #if CRC32_USE_LOOKUP_TABLE == true
 
-uint32_t generateCRC32 (const char *byteBuffer, uint8_t length) {
+uint32_t generateCRC32 (const char *byteBuffer, uint32_t length) {
     uint32_t crc = 0;
 
-    for (uint8_t i = 0; i < length; i++) {
+    for (uint32_t i = 0; i < length; i++) {
         crc =  LOOKUP_CRC32_TABLE[((crc >> 24) ^ byteBuffer[i]) & 0xFF] ^ (crc << 8);
     }
     return crc;
 }
 #else
 
-uint32_t generateCRC32(const char *byteBuffer, uint8_t length) {
+uint32_t generateCRC32(const char *byteBuffer, uint32_t length) {
     const uint32_t polynomial = 0x04C11DB7; /* divisor is 32bit */
     uint32_t crc = 0; /* CRC value is 32bit */
 
-    for (int i = 0; i < length; i++) {
+    for (uint32_t i = 0; i < length; i++) {
         crc ^= (byteBuffer[i] << 24); /* move byte into MSB of 32bit CRC */
 
-        for (int j = 0; j < 8; j++) {
+        for (uint8_t j = 0; j < 8; j++) {
             if ((crc & 0x80000000) != 0) { /* test for MSB = bit 31 */
                 crc = ((crc << 1) ^ polynomial);
             } else {
