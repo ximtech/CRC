@@ -1,6 +1,16 @@
 #pragma once
 
 #include "BaseTestTemplate.h"
+
+#undef CRC8_USE_LOOKUP_TABLE
+#define CRC8_USE_LOOKUP_TABLE  false
+
+#undef CRC16_USE_LOOKUP_TABLE
+#define CRC16_USE_LOOKUP_TABLE false
+
+#undef CRC32_USE_LOOKUP_TABLE
+#define CRC32_USE_LOOKUP_TABLE false
+
 #include "CRC.h"
 #include <string.h>
 
