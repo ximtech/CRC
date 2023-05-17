@@ -4,8 +4,8 @@
 #include <stdint.h>
 
 //#define CRC8_USE_LOOKUP_TABLE
-//#define CRC16_USE_LOOKUP_TABLE false
-//#define CRC32_USE_LOOKUP_TABLE false
+//#define CRC16_USE_LOOKUP_TABLE
+//#define CRC32_USE_LOOKUP_TABLE
 
 // Dallas 1-wire 8-bit CRC calculation.
 uint8_t generateCRC8(const char *byteBuffer, uint32_t length);
