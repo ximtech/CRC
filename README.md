@@ -30,9 +30,9 @@ target_link_libraries(${PROJECT_NAME}.elf CRC)
 ## Configuration
 At `CRC.h` set "define" value for switching to lookup table algorithm
 ```c
-#define CRC8_USE_LOOKUP_TABLE  true
-#define CRC16_USE_LOOKUP_TABLE true
-#define CRC32_USE_LOOKUP_TABLE true
+#define CRC8_USE_LOOKUP_TABLE
+#define CRC16_USE_LOOKUP_TABLE
+#define CRC32_USE_LOOKUP_TABLE
 ```
 
 ## Usage

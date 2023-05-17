@@ -1,6 +1,6 @@
 #include "CRC.h"
 
-#if CRC8_USE_LOOKUP_TABLE == true
+#ifdef CRC8_USE_LOOKUP_TABLE
 // This table comes from Dallas sample code where it is freely reusable,
 // though Copyright (C) 2000 Dallas Semiconductor Corporation
 static const uint8_t LOOKUP_CRC8_TABLE[] = {
@@ -24,7 +24,7 @@ static const uint8_t LOOKUP_CRC8_TABLE[] = {
         53};
 #endif
 
-#if CRC16_USE_LOOKUP_TABLE == true
+#ifdef CRC16_USE_LOOKUP_TABLE
 /* Table of CRC constants - implements x^16+x^12+x^5+1 */
 static const uint16_t LOOKUP_CRC16_TABLE[] = {
         0x0000, 0x1021, 0x2042, 0x3063, 0x4084, 0x50a5, 0x60c6, 0x70e7,
@@ -62,7 +62,7 @@ static const uint16_t LOOKUP_CRC16_TABLE[] = {
 };
 #endif
 
-#if CRC32_USE_LOOKUP_TABLE == true
+#ifdef CRC32_USE_LOOKUP_TABLE
 static const uint32_t LOOKUP_CRC32_TABLE[] = {
         0x00000000, 0x04c11db7, 0x09823b6e, 0x0d4326d9,
         0x130476dc, 0x17c56b6b, 0x1a864db2, 0x1e475005,
@@ -132,7 +132,7 @@ static const uint32_t LOOKUP_CRC32_TABLE[] = {
 #endif
 
 
-#if CRC8_USE_LOOKUP_TABLE == true
+#ifdef CRC8_USE_LOOKUP_TABLE
 
 uint8_t generateCRC8(const char *byteBuffer, uint32_t length) {
     uint8_t crc = 0;
@@ -163,7 +163,7 @@ uint8_t generateCRC8(const char *byteBuffer, uint32_t length) {
 }
 #endif
 
-#if CRC16_USE_LOOKUP_TABLE == true
+#ifdef CRC16_USE_LOOKUP_TABLE
 
 uint16_t generateCRC16(const char *byteBuffer, uint32_t length) {
     uint16_t crc = 0;
@@ -196,7 +196,7 @@ uint16_t generateCRC16(const char *byteBuffer, uint32_t length) {
 #endif
 
 
-#if CRC32_USE_LOOKUP_TABLE == true
+#ifdef CRC32_USE_LOOKUP_TABLE
 
 uint32_t generateCRC32 (const char *byteBuffer, uint32_t length) {
     uint32_t crc = 0;
